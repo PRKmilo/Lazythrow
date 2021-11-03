@@ -8,7 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
+import co.edu.unbosque.model.juego;
 import co.edu.unbosque.model.Jugador;
 import co.edu.unbosque.model.paritda;
 
@@ -23,6 +23,7 @@ public class JugadorFile {
 	private DataInputStream dis;
 	private Jugador[] datos;
 	private paritda[] datos2;
+	private juego[] datos3;
 	
 	public String escribir_registro() {
 		String respuesta="Registro de jugador ingresado";
@@ -86,6 +87,37 @@ public class JugadorFile {
 		}
 	}
 	
+	public String escribirJuego() {
+		String respuesta="Registro del Juego";
+		juego staff[]=new juego[3];
+		staff[0]=new juego("tipo juego",0.0);
+		staff[1]=new juego("nombre juego",0.0);
+		
+		try {
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ruta));
+			out.writeObject(staff);
+			out.close();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+			respuesta = "Error de IO";
+		}
+		return respuesta;
+	}
+	
+	public void leerJuego() {
+        ObjectInputStream in;
+		try {
+			in = new ObjectInputStream(new FileInputStream(ruta));
+			datos3 = (juego[])in.readObject();
+	        in.close();
+	        
+
+		} catch (IOException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	public Jugador getPlayer1() {
 		return player1;
