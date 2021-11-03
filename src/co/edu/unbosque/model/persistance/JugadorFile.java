@@ -24,8 +24,8 @@ public class JugadorFile {
 	public String escribir_registro() {
 		String respuesta="Registro de jugador ingresado";
 		Jugador staff[]=new Jugador[3];
-		staff[0]=new Jugador();
-		staff[1]=new Jugador();
+		staff[0]=new Jugador("qv",23,"masculino",0);
+		staff[1]=new Jugador("qv",23,"masculino",0);
 		
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ruta));

@@ -9,6 +9,13 @@ public class Jugador {
 	private String genero;
 	private int puntaje;
 		
+		public Jugador(String string, int i, String string2, int j) {
+		// TODO Auto-generated constructor stub
+			this.nombre= string;
+			this.edad =i;
+			this.genero=string2;
+			this.puntaje=j;
+	}
 		public String getNombre() {
 		return nombre;
 	}
