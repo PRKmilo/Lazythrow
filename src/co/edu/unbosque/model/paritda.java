@@ -4,9 +4,19 @@ public class paritda {
    private String jugador1;
    private String jugador2;
    private String tipopartida;
-   private Double puntaje1;
-   private Double puntaje2;
+   private double puntaje1;
+   private double puntaje2;
    
+
+public paritda(String jugador1, String jugador2, String tipopartida, double puntaje1, double puntaje2) {
+	super();
+	this.jugador1 = jugador1;
+	this.jugador2 = jugador2;
+	this.tipopartida = tipopartida;
+	this.puntaje1 = puntaje1;
+	this.puntaje2 = puntaje2;
+}
+
 public String getJugador1() {
 	return jugador1;
 }

@@ -10,16 +10,19 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import co.edu.unbosque.model.Jugador;
+import co.edu.unbosque.model.paritda;
 
 public class JugadorFile {
 	private Jugador player1;
 	private  String ruta="./Data/jugador.out";
+	private String ruta2="./Data/jugador.out";
 	private File f; 
 	private FileOutputStream fos;     
 	private DataOutputStream dos;
 	private FileInputStream fis;     
 	private DataInputStream dis;
 	private Jugador[] datos;
+	private paritda[] datos2;
 	
 	public String escribir_registro() {
 		String respuesta="Registro de jugador ingresado";
@@ -52,6 +55,37 @@ public class JugadorFile {
 			e.printStackTrace();
 		}
 	}
+	public String escribir_partida() {
+		String respuesta="Registro de partida";
+		paritda staff2[]=new paritda[3];
+		staff2[0]=new paritda("Jorge","camilo","parques",0.0,0.0);
+		staff2[1]=new paritda("Esteban","fercho","piquis",0.0,0.0);
+		
+		try {
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ruta));
+			out.writeObject(staff2);
+			out.close();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+			respuesta = "Error de IO";
+		}
+		return respuesta;
+	}
+	public void leerpartida() {
+        ObjectInputStream in;
+		try {
+			in = new ObjectInputStream(new FileInputStream(ruta));
+	        datos2 = (paritda[])in.readObject();
+	        in.close();
+	        
+
+		} catch (IOException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 
 	public Jugador getPlayer1() {
 		return player1;
@@ -116,5 +150,6 @@ public class JugadorFile {
 	public void setDatos(Jugador[] datos) {
 		this.datos = datos;
 	}
+	
 	
 }
