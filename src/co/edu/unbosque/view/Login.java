@@ -104,7 +104,7 @@ public class Login extends JFrame {
 		btnNewButton.setBounds(269, 118, 96, 39);
 		contentPane.add(btnNewButton);
 	}
-
+//put
 	 
 	}
 
