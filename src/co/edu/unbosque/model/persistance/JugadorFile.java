@@ -15,7 +15,8 @@ import co.edu.unbosque.model.paritda;
 public class JugadorFile {
 	private Jugador player1;
 	private  String ruta="./Data/jugador.out";
-	private String ruta2="./Data/jugador.out";
+	private String ruta2="./Data/partida.out";
+	private String ruta3="./Data/juego.out";
 	private File f; 
 	private FileOutputStream fos;     
 	private DataOutputStream dos;
@@ -63,7 +64,7 @@ public class JugadorFile {
 		staff2[1]=new paritda("Esteban","fercho","piquis",0.0,0.0);
 		
 		try {
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ruta));
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ruta2));
 			out.writeObject(staff2);
 			out.close();
 		}
@@ -76,7 +77,7 @@ public class JugadorFile {
 	public void leerpartida() {
         ObjectInputStream in;
 		try {
-			in = new ObjectInputStream(new FileInputStream(ruta));
+			in = new ObjectInputStream(new FileInputStream(ruta2));
 	        datos2 = (paritda[])in.readObject();
 	        in.close();
 	        
@@ -94,7 +95,7 @@ public class JugadorFile {
 		staff[1]=new juego("nombre juego",0.0);
 		
 		try {
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ruta));
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ruta3));
 			out.writeObject(staff);
 			out.close();
 		}
@@ -108,7 +109,7 @@ public class JugadorFile {
 	public void leerJuego() {
         ObjectInputStream in;
 		try {
-			in = new ObjectInputStream(new FileInputStream(ruta));
+			in = new ObjectInputStream(new FileInputStream(ruta3));
 			datos3 = (juego[])in.readObject();
 	        in.close();
 	        
