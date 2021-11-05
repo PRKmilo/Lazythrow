@@ -13,12 +13,12 @@ public class PanelEntrada extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JLabel labEntrada;
 	private JTextField txtNumero;
-	private JButton butLeer;
+	private JButton butJuego;
 	private JButton butEscribir;
 	private JButton butLeerReg;
 	private JButton butEscribirReg;
 	public static final String ESCRIBIR = "Escribir";
-	public static final String LEER = "Leer";
+	public static final String JUEGO = "Juego";
 	public static final String ESCRIBIR_REG = "EscribirReg";
 	public static final String LEER_REG = "LeerReg";
 
@@ -31,8 +31,8 @@ public class PanelEntrada extends JPanel{
 		txtNumero = new JTextField("");
 		txtNumero.setForeground(Color.BLACK);
 		txtNumero.setBackground(Color.WHITE);
-		butLeer = new JButton("Leer");
-		butLeer.setActionCommand(LEER);
+		butJuego = new JButton("Juego");
+		butJuego.setActionCommand(JUEGO);
 		butEscribir = new JButton("Escribir");
 		butEscribir.setActionCommand(ESCRIBIR);
 
@@ -44,7 +44,7 @@ public class PanelEntrada extends JPanel{
 		//add(labEntrada);
 		//add(txtNumero);
 		add(butEscribir);
-		add(butLeer);
+		add(butJuego);
 		add(butEscribirReg);
 		add(butLeerReg);
 	}
@@ -90,11 +90,11 @@ public class PanelEntrada extends JPanel{
 	}
 
 	public JButton getButLeer() {
-		return butLeer;
+		return butJuego;
 	}
 
 	public void setButLeer(JButton butLeer) {
-		this.butLeer = butLeer;
+		this.butJuego = butLeer;
 	}
 
 	public JButton getButEscribir() {
