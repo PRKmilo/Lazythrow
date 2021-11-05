@@ -31,7 +31,7 @@ public class controller implements ActionListener{
 			gui.escribirMensaje(resultado);
 		}
 
-		if(evento.getActionCommand().equals(gui.getPanelEntrada().LEER)) {
+		if(evento.getActionCommand().equals(gui.getPanelEntrada().JUEGO)) {
 			bd.getBf().leerArchivoBinario();
 			gui.mostrarCifras(
 					bd.getBf().getREGISTROS(), 
