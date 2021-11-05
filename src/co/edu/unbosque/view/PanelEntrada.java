@@ -31,15 +31,15 @@ public class PanelEntrada extends JPanel{
 		txtNumero = new JTextField("");
 		txtNumero.setForeground(Color.BLACK);
 		txtNumero.setBackground(Color.WHITE);
-		butLeer = new JButton("Leer");
+		butLeer = new JButton("Jugador");
 		butLeer.setActionCommand(LEER);
-		butEscribir = new JButton("Escribir");
+		butEscribir = new JButton("Juego");
 		butEscribir.setActionCommand(ESCRIBIR);
 
-		butLeerReg = new JButton("Leer Registros");
+		butLeerReg = new JButton("Partida");
 		butLeerReg.setActionCommand(LEER_REG);
 
-		butEscribirReg = new JButton("Escribir Registros");
+		butEscribirReg = new JButton("Torneo");
 		butEscribirReg.setActionCommand(ESCRIBIR_REG);
 		//add(labEntrada);
 		//add(txtNumero);
