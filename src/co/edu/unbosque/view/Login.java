@@ -21,7 +21,7 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtUsuario;
 	private JPasswordField jpassClave;
-	private JButton btnNewButton;
+	private JButton btnIngresar;
 
 	/**
 	 * Launch the application.
@@ -77,9 +77,9 @@ public class Login extends JFrame {
 		jpassClave.setBounds(139, 169, 96, 19);
 		contentPane.add(jpassClave);
 		
-		btnNewButton = new JButton("Ingresar");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNewButton.addActionListener(new ActionListener() {
+		btnIngresar = new JButton("Ingresar");
+		btnIngresar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnIngresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				char[] clave = jpassClave.getPassword();
 				String claveFinal = new String (clave);
@@ -101,11 +101,14 @@ public class Login extends JFrame {
 			}
 		
 		});
-		btnNewButton.setBounds(269, 118, 96, 39);
-		contentPane.add(btnNewButton);
+		btnIngresar.setBounds(281, 85, 115, 39);
+		contentPane.add(btnIngresar);
+		
+		JButton btnRegistrarse = new JButton("Registrarse");
+		btnRegistrarse.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnRegistrarse.setBounds(281, 157, 115, 39);
+		contentPane.add(btnRegistrarse);
 	}
-//put
-	 
 	}
 
 
