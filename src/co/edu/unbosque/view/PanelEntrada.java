@@ -33,13 +33,13 @@ public class PanelEntrada extends JPanel{
 		txtNumero.setBackground(Color.WHITE);
 		butJuego = new JButton("Juego");
 		butJuego.setActionCommand(JUEGO);
-		butEscribir = new JButton("Escribir");
+		butEscribir = new JButton("Jugador");
 		butEscribir.setActionCommand(ESCRIBIR);
 
-		butLeerReg = new JButton("Leer Registros");
+		butLeerReg = new JButton("Partida");
 		butLeerReg.setActionCommand(LEER_REG);
 
-		butEscribirReg = new JButton("Escribir Registros");
+		butEscribirReg = new JButton("Jugadores");
 		butEscribirReg.setActionCommand(ESCRIBIR_REG);
 		//add(labEntrada);
 		//add(txtNumero);
