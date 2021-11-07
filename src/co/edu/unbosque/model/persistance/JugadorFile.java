@@ -26,11 +26,11 @@ public class JugadorFile {
 	private paritda[] datos2;
 	private juego[] datos3;
 	
-	public String escribir_registro() {
+	public String escribir_registro(String nombre,int edad,String genero,int puntaje) {
 		String respuesta="Registro de jugador ingresado";
 		Jugador staff[]=new Jugador[3];
-		staff[0]=new Jugador("qv",23,"masculino",0);
-		staff[1]=new Jugador("qv",23,"masculino",0);
+		staff[0]=creando_jugador(nombre,edad,genero,puntaje);
+		
 		
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ruta));
@@ -56,6 +56,9 @@ public class JugadorFile {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public Jugador creando_jugador(String nombre,int edad,String genero,int puntaje) {
+		return new Jugador(nombre,edad,genero,puntaje);
 	}
 	public String escribir_partida() {
 		String respuesta="Registro de partida";

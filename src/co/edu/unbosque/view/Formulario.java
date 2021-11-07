@@ -108,14 +108,7 @@ public class Formulario extends JFrame {
 		
 	}
 
-	public JPanel getContentPane() {
-		return contentPane;
-	}
-
-	public void setContentPane(JPanel contentPane) {
-		this.contentPane = contentPane;
-	}
-
+	
 	public JTextField getTextField() {
 		return textField;
 	}
@@ -139,4 +132,6 @@ public class Formulario extends JFrame {
 	public void setTextField_2(JTextField textField_2) {
 		this.textField_2 = textField_2;
 	}
+
+	
 }
