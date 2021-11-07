@@ -2,10 +2,11 @@ package co.edu.unbosque.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import co.edu.unbosque.model.Binarios;
+import co.edu.unbosque.view.Formulario;
 import co.edu.unbosque.view.View;
 
 public class controller implements ActionListener{
-	
+	private Formulario form;
 	private Binarios bd;
 
 	//Atributos que vienen de Vista - GUI
@@ -27,6 +28,8 @@ public class controller implements ActionListener{
 		// TODO Auto-generated method stub
 		String resultado;
 		if (evento.getActionCommand().equals(gui.getPanelEntrada().ESCRIBIR)) {
+			form=new Formulario();
+			form.setVisible(true);
 			resultado = bd.getBf().escribirArchivoBinario();
 			gui.escribirMensaje(resultado);
 		}
