@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import co.edu.unbosque.model.persistance.JugadorFile;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JList;
@@ -23,22 +26,13 @@ public class Formulario extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private JugadorFile jf; 
+	
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Formulario frame = new Formulario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
@@ -91,7 +85,7 @@ public class Formulario extends JFrame {
 		
 		JLabel lblNewLabel_3 = new JLabel("Genero:");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_3.setBounds(271, 151, 89, 20);
+		lblNewLabel_3.setBounds(271, 150, 89, 20);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Registro de Usuario");
@@ -99,14 +93,13 @@ public class Formulario extends JFrame {
 		lblNewLabel_4.setBounds(187, 24, 214, 31);
 		contentPane.add(lblNewLabel_4);
 		
-		JButton btnNewButton = new JButton("Registrar");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNewButton.setBounds(220, 235, 133, 31);
 		contentPane.add(btnNewButton);
+		
+		btnNewButton.setActionCommand("REGISTRAR");
+	
 		
 	}
 
@@ -142,6 +135,7 @@ public class Formulario extends JFrame {
 	public void setTextField_2(JTextField textField_2) {
 		this.textField_2 = textField_2;
 	}
-
+	public JButton btnNewButton = new JButton("Registrar");
+	
 	
 }

@@ -100,11 +100,11 @@ public class JugadorFile {
 		}
 	}
 	
-	public String escribirJuego() {
+	public String escribirJuego(String tipo,String nombre) {
 		String respuesta="Registro del Juego";
 		juego staff[]=new juego[3];
-		staff[0]=new juego("tipo juego",0.0);
-		staff[1]=new juego("nombre juego",0.0);
+		staff[0]=creando_juego(tipo,nombre);
+		
 		
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ruta3));
@@ -116,6 +116,10 @@ public class JugadorFile {
 			respuesta = "Error de IO";
 		}
 		return respuesta;
+	}
+	
+	public juego creando_juego(String tipo,String nombre) {
+		return new juego( nombre ,tipo);
 	}
 	
 	public void leerJuego() {
