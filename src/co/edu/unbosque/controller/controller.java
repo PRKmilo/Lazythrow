@@ -34,16 +34,8 @@ public class controller implements ActionListener{
 		if (evento.getActionCommand().equals(gui.getPanelEntrada().ESCRIBIR)) {
 			form=new Formulario();
 			form.setVisible(true);
-			if(evento.getActionCommand().equals("REGISTRAR")) {
-				String nombre=form.getTextField().getText();
-			     String edad=form.getTextField_1().getText();
-			    
-			     String puntaje=form.getTextField_2().getText();
-			     String genero=form.getTextField_3().getText();
-			     
-			    jf.escribir_registroJugador(nombre, 12, genero, 13);
-			    System.out.println("se oprimio el boton");
-			}	
+			
+			
 			
 		}
 
