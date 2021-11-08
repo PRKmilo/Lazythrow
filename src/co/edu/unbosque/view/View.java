@@ -12,10 +12,12 @@ public class View extends JFrame {
 	private PanelEntrada panelEntrada; //Se declara un objeto de tipo PanelEntrada
 	private PanelResultados panelResultados; //Se declara un objeto de tipo PanelResultados
 	private PanelRegistro panelRegistro;
+	
 
 	public View(controller control) 
 	{
 		// Definición de los parámetros básicos de la ventana principal
+		
 
 		setSize(500,400); //tamaño en ancho y alto en pixeles
 		setResizable(false); //Se puede cambiar el tamaño de la ventana?
@@ -34,6 +36,7 @@ public class View extends JFrame {
 		add(panelRegistro,BorderLayout.SOUTH);
 
 		//se agrega al boton ActionListener del objeto de Controlador - cambio
+		
 		panelEntrada.getButEscribir().addActionListener(control);
 		panelEntrada.getButLeer().addActionListener(control);
 		panelEntrada.getButLeerReg().addActionListener(control);

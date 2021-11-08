@@ -27,11 +27,24 @@ public class Formulario extends JFrame {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JugadorFile jf; 
+	private JButton jbt;
 	
 
 	/**
 	 * Launch the application.
 	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Formulario frame = new Formulario();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 	
 
 	/**
@@ -93,12 +106,14 @@ public class Formulario extends JFrame {
 		lblNewLabel_4.setBounds(187, 24, 214, 31);
 		contentPane.add(lblNewLabel_4);
 		
+		JButton jbt=new JButton("Registrar");
+		jbt.setFont(new Font("Tahoma", Font.BOLD, 14));
+		jbt.setBounds(220, 235, 133, 31);
+		jbt.setActionCommand("REGISTRAR");
+		contentPane.add(jbt);
 		
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnNewButton.setBounds(220, 235, 133, 31);
-		contentPane.add(btnNewButton);
 		
-		btnNewButton.setActionCommand("REGISTRAR");
+		
 	
 		
 	}
@@ -107,6 +122,16 @@ public class Formulario extends JFrame {
 	public JTextField getTextField_3() {
 		return textField_3;
 	}
+
+	public JButton getJbt() {
+		return jbt;
+	}
+
+
+	public void setJbt(JButton jbt) {
+		this.jbt = jbt;
+	}
+
 
 	public void setTextField_3(JTextField textField_3) {
 		this.textField_3 = textField_3;
@@ -135,7 +160,7 @@ public class Formulario extends JFrame {
 	public void setTextField_2(JTextField textField_2) {
 		this.textField_2 = textField_2;
 	}
-	public JButton btnNewButton = new JButton("Registrar");
+	
 	
 	
 }

@@ -16,6 +16,7 @@ public class controller implements ActionListener{
 
 	public controller() {
 		jf=new JugadorFile();
+		form=new Formulario();
 
 		//aqui van los constructores tanto de Mundo, como de Vista
 
@@ -33,7 +34,7 @@ public class controller implements ActionListener{
 		if (evento.getActionCommand().equals(gui.getPanelEntrada().ESCRIBIR)) {
 			form=new Formulario();
 			form.setVisible(true);
-			if(evento.getActionCommand().equals(form.btnNewButton.getActionCommand())) {
+			if(evento.getActionCommand().equals("REGISTRAR")) {
 				String nombre=form.getTextField().getText();
 			     String edad=form.getTextField_1().getText();
 			    
