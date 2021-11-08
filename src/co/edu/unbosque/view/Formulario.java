@@ -22,6 +22,7 @@ public class Formulario extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField textField_3;
 
 	/**
 	 * Launch the application.
@@ -61,16 +62,17 @@ public class Formulario extends JFrame {
 		lblNewLabel_1.setBounds(42, 146, 96, 31);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Nickname:");
+		JLabel lblNewLabel_2 = new JLabel("Puntaje:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_2.setBounds(271, 94, 96, 31);
 		contentPane.add(lblNewLabel_2);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setFont(new Font("Tahoma", Font.BOLD, 14));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Masculino", "Femenino"}));
-		comboBox.setBounds(386, 151, 103, 21);
-		contentPane.add(comboBox);
+		
+		
+		textField_3=new JTextField();
+		textField_3.setBounds(386, 151, 103, 21);
+		contentPane.add(textField_3);
+		textField_3.setColumns(10);
 		
 		textField = new JTextField();
 		textField.setBounds(141, 102, 96, 19);
@@ -109,6 +111,14 @@ public class Formulario extends JFrame {
 	}
 
 	
+	public JTextField getTextField_3() {
+		return textField_3;
+	}
+
+	public void setTextField_3(JTextField textField_3) {
+		this.textField_3 = textField_3;
+	}
+
 	public JTextField getTextField() {
 		return textField;
 	}

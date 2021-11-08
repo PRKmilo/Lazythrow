@@ -2,17 +2,20 @@ package co.edu.unbosque.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import co.edu.unbosque.model.Binarios;
+import co.edu.unbosque.model.persistance.JugadorFile;
 import co.edu.unbosque.view.Formulario;
 import co.edu.unbosque.view.View;
 
 public class controller implements ActionListener{
 	private Formulario form;
 	private Binarios bd;
+	private JugadorFile jf;
 
 	//Atributos que vienen de Vista - GUI
 	private View gui;
 
 	public controller() {
+		jf=new JugadorFile();
 
 		//aqui van los constructores tanto de Mundo, como de Vista
 
@@ -30,26 +33,29 @@ public class controller implements ActionListener{
 		if (evento.getActionCommand().equals(gui.getPanelEntrada().ESCRIBIR)) {
 			form=new Formulario();
 			form.setVisible(true);
-			resultado = bd.getBf().escribirArchivoBinario();
-			gui.escribirMensaje(resultado);
+			
+			String nombre=form.getTextField().getText();
+		     String edad=form.getTextField_1().getText();
+		    
+		     String puntaje=form.getTextField_2().getText();
+		     String genero=form.getTextField_3().getText();
+		     
+		    jf.escribir_registroJugador(nombre, 12, genero, 13);
+		     
+			
+			
 		}
 
 		if(evento.getActionCommand().equals(gui.getPanelEntrada().JUEGO)) {
-			bd.getBf().leerArchivoBinario();
-			gui.mostrarCifras(
-					bd.getBf().getREGISTROS(), 
-					bd.getBf().getNumeros(), 
-					bd.getBf().getValores());
+			
 		}
 
 		if(evento.getActionCommand().equals(gui.getPanelEntrada().ESCRIBIR_REG)) {
-			gui.escribirMensaje(bd.getBf().escribirRegistro());
+			
 		}
 
 		if(evento.getActionCommand().equals(gui.getPanelEntrada().LEER_REG)) {
-			bd.getBf().leerRegistro();	
-			gui.mostrarRegistros(3, 
-					bd.getBf().getDatos());
+			
 		}
 	}
 

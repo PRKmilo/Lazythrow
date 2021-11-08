@@ -26,15 +26,24 @@ public class JugadorFile {
 	private paritda[] datos2;
 	private juego[] datos3;
 	
-	public String escribir_registro(String nombre,int edad,String genero,int puntaje) {
+	public String escribir_registroJugador(String nombre,int edad,String genero,int puntaje) {
 		String respuesta="Registro de jugador ingresado";
 		Jugador staff[]=new Jugador[3];
 		staff[0]=creando_jugador(nombre,edad,genero,puntaje);
+		staff[1]=creando_jugador(nombre,edad,genero,puntaje);
+		staff[2]=creando_jugador(nombre,edad,genero,puntaje);
+		
 		
 		
 		try {
+			System.out.println("linea 39");
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ruta));
+			System.out.println("linea 41");
+			for (int i=0;i<staff.length;i++) {
+				System.out.println(staff[i]+"es es el objeto num "+i);
+			}
 			out.writeObject(staff);
+			System.out.println("linea 43");
 			out.close();
 		}
 		catch (IOException e) {

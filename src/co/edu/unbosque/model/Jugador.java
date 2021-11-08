@@ -1,8 +1,9 @@
 package co.edu.unbosque.model;
 
 import java.io.File;
+import java.io.Serializable;
 
-public class Jugador {
+public class Jugador  implements Serializable{
 	
 	private String nombre;
 	private int edad;
