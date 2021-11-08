@@ -1,6 +1,8 @@
 package co.edu.unbosque.model;
 
-public class paritda {
+import java.io.Serializable;
+
+public class paritda implements Serializable{
    private String jugador1;
    private String jugador2;
    private String tipopartida;
