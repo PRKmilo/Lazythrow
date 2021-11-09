@@ -12,6 +12,7 @@ import co.edu.unbosque.model.persistance.JugadorFile;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.DefaultComboBoxModel;
@@ -58,6 +59,7 @@ public class Formulario extends JFrame {
 	 * Create the frame.
 	 */
 	public Formulario() {
+		jf=new JugadorFile();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 565, 348);
 		contentPane = new JPanel();
@@ -118,7 +120,30 @@ public class Formulario extends JFrame {
 		this.jbt.setBounds(220, 235, 133, 31);
 		this.jbt.setActionCommand(REGISTRAR);
 		contentPane.add(this.jbt);
-		
+		ActionListener escuchador=new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(jf);
+				System.out.println("se oprimio el boton de registrar");
+				String genero=textField_3.getText();
+				int edad=Integer.parseInt(textField_2.getText());
+				String nombre=textField.getText();
+				int puntaje=Integer.parseInt(textField_1.getText());
+				
+				JOptionPane.showMessageDialog(null,jf.escribir_registroJugador(nombre, edad, genero, puntaje));
+				jf.leerRegistro();
+				System.out.println(jf.getDatos()+"");
+				for(int i=0;i<jf.getDatos().length;i++) {
+					System.out.println(jf.getDatos()[i].getNombre()+" este es el nombre de el objeto");
+				}
+				
+				// TODO Auto-generated method stub
+				
+			}
+			
+		};
+		this.jbt.addActionListener(escuchador);
 		
 		
 	

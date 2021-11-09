@@ -26,11 +26,15 @@ public class controller implements ActionListener{
 		//se Modifica contructor de InterfazGUI para que reciba como parámetro la instancia de Controlador
 		gui = new View(this);
 		gui.setVisible(true); //hacer visible la ventana principal
-		b_registrarActionPerformed(null);
+		
 
 	}
 	public void asignar_oyentes() {
 		form.getJbt().addActionListener(this);
+		gui.getPanelEntrada().getButEscribir().addActionListener(this);;
+		gui.getPanelEntrada().getButLeer().addActionListener(this);
+		gui.getPanelEntrada().getButLeerReg().addActionListener(this);
+		gui.getPanelEntrada().getButEscribirReg().addActionListener(this);
 	}
 
 	public void actionPerformed(ActionEvent evento) {
@@ -45,14 +49,11 @@ public class controller implements ActionListener{
 			
 			System.out.println("linea 36");
 			form.setVisible(true);
-			String g=form.getJbt().getActionCommand();
-			System.out.println(g);
-			System.out.println(evento.getActionCommand()+" este es el comando accion");	
+				
+			
 			
 		}
-		if(evento.getActionCommand().equals(form.getRegistrar())) {
-			System.out.println("se espicho este boton");
-		}
+		
 		if(evento.getActionCommand().equals(gui.getPanelEntrada().JUEGO)) {
 			
 		}
@@ -67,11 +68,9 @@ public class controller implements ActionListener{
 		
 		
 	}
-	private void b_registrarActionPerformed(ActionEvent e) {
-		if(form.getJbt().isSelected()) {
-			System.out.println("el boton registrar fue seleccionado");
-		}
-	}
+	
+	
+	
 	
 
 }

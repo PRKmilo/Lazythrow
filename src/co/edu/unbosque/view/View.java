@@ -1,6 +1,8 @@
 package co.edu.unbosque.view;
 
 import java.awt.BorderLayout;
+
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import co.edu.unbosque.controller.controller;
@@ -40,7 +42,7 @@ public class View extends JFrame {
 		
 
 		//se agrega al boton ActionListener del objeto de Controlador - cambio
-		
+		form.getJbt().addActionListener(control);
 		panelEntrada.getButEscribir().addActionListener(control);
 		panelEntrada.getButLeer().addActionListener(control);
 		panelEntrada.getButLeerReg().addActionListener(control);
