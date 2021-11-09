@@ -99,6 +99,7 @@ public class Partida extends JFrame {
 		txtPuntaje2.setColumns(10);
 		
 		JButton btnRegistrarJuego = new JButton("Registrar");
+		btnRegistrarJuego.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnRegistrarJuego.setBounds(167, 193, 125, 34);
 		contentPane.add(btnRegistrarJuego);
 	}
