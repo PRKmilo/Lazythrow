@@ -12,6 +12,8 @@ public class View extends JFrame {
 	private PanelEntrada panelEntrada; //Se declara un objeto de tipo PanelEntrada
 	private PanelResultados panelResultados; //Se declara un objeto de tipo PanelResultados
 	private PanelRegistro panelRegistro;
+	private Formulario form;
+	
 	
 
 	public View(controller control) 
@@ -34,6 +36,8 @@ public class View extends JFrame {
 		add(panelResultados,BorderLayout.CENTER);
 		panelRegistro = new PanelRegistro();
 		add(panelRegistro,BorderLayout.SOUTH);
+		form=new Formulario();
+		
 
 		//se agrega al boton ActionListener del objeto de Controlador - cambio
 		
@@ -41,6 +45,7 @@ public class View extends JFrame {
 		panelEntrada.getButLeer().addActionListener(control);
 		panelEntrada.getButLeerReg().addActionListener(control);
 		panelEntrada.getButEscribirReg().addActionListener(control);
+	
 	}
 
 	public PanelEntrada getPanelEntrada() {

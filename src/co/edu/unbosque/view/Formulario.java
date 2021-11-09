@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import co.edu.unbosque.controller.controller;
 import co.edu.unbosque.model.persistance.JugadorFile;
 
 import javax.swing.JLabel;
@@ -21,6 +22,10 @@ import java.awt.event.ActionEvent;
 
 public class Formulario extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -28,6 +33,8 @@ public class Formulario extends JFrame {
 	private JTextField textField_3;
 	private JugadorFile jf; 
 	private JButton jbt;
+	private controller cont;
+	private static final String REGISTRAR ="REGISTRAR";
 	
 
 	/**
@@ -106,11 +113,11 @@ public class Formulario extends JFrame {
 		lblNewLabel_4.setBounds(187, 24, 214, 31);
 		contentPane.add(lblNewLabel_4);
 		
-		JButton jbt=new JButton("Registrar");
-		jbt.setFont(new Font("Tahoma", Font.BOLD, 14));
-		jbt.setBounds(220, 235, 133, 31);
-		jbt.setActionCommand("REGISTRAR");
-		contentPane.add(jbt);
+		 this.jbt=new JButton("Registrar");
+		this.jbt.setFont(new Font("Tahoma", Font.BOLD, 14));
+		this.jbt.setBounds(220, 235, 133, 31);
+		this.jbt.setActionCommand(REGISTRAR);
+		contentPane.add(this.jbt);
 		
 		
 		
@@ -119,18 +126,23 @@ public class Formulario extends JFrame {
 	}
 
 	
+	public  String getRegistrar() {
+		return REGISTRAR;
+	}
+
+
 	public JTextField getTextField_3() {
 		return textField_3;
 	}
 
 	public JButton getJbt() {
-		return jbt;
+		System.out.println(jbt);
+	
+		return this.jbt;
 	}
 
 
-	public void setJbt(JButton jbt) {
-		this.jbt = jbt;
-	}
+	
 
 
 	public void setTextField_3(JTextField textField_3) {
@@ -160,6 +172,9 @@ public class Formulario extends JFrame {
 	public void setTextField_2(JTextField textField_2) {
 		this.textField_2 = textField_2;
 	}
+
+
+	
 	
 	
 	
