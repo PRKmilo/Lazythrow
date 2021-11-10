@@ -29,7 +29,7 @@ public class Partida extends JFrame {
 	private JTextField txtPuntaje1;
 	private JTextField txtPuntaje2;
 	private JButton jbt;
-	private View v;
+	
 	private static final String REGISTRAR ="REGISTRAR";
 
 	/**
@@ -52,8 +52,8 @@ public class Partida extends JFrame {
 	 * Create the frame.
 	 */
 	public Partida() {
-		v = new View(null);
-		v.setVisible(false);
+		
+
 		jf=new JugadorFile();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -122,7 +122,7 @@ public class Partida extends JFrame {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					v.setVisible(true);
+			
 				
 					
 					String jugador1=textJugador1.getText();

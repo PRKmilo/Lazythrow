@@ -5,12 +5,19 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import co.edu.unbosque.model.persistance.JugadorFile;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Color;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
@@ -19,6 +26,9 @@ public class Juego extends JFrame {
 	private JPanel contentPane;
 	private JTextField textTipoDeJUego;
 	private JTextField textNombreDeJuego;
+	private JugadorFile jf;
+	private JButton jbt;
+	private static final String JUEGO ="JUEGO";
 
 
 	/**
@@ -76,9 +86,34 @@ public class Juego extends JFrame {
 		lblNewLabel_2.setBounds(131, 10, 178, 51);
 		contentPane.add(lblNewLabel_2);
 		
-		JButton btnRegistrarJUego = new JButton("Registrar");
-		btnRegistrarJUego.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnRegistrarJUego.setBounds(299, 125, 109, 39);
-		contentPane.add(btnRegistrarJUego);
+		 this.jbt=new JButton("Registrar");
+			this.jbt.setFont(new Font("Tahoma", Font.BOLD, 14));
+			this.jbt.setBounds(220, 235, 133, 31);
+			this.jbt.setActionCommand(JUEGO);
+			contentPane.add(this.jbt);
+			jf = new JugadorFile();
+		ActionListener escuchador=new ActionListener() {
+
+		public void actionPerformed(ActionEvent e) {
+				
+			String Tipo = textTipoDeJUego.getText();
+			String nombre = textNombreDeJuego.getText();
+			JOptionPane.showMessageDialog(null,jf.escribirJuego(Tipo, nombre));
+		
+jf.leerJuego();
+			System.out.println(jf.getDatos3()+"");
+			for(int i=0; i<jf.getDatos3().length;i++) {
+				System.out.println(jf.getDatos3()[i].getNombre()+ "este es el nombre del objeto");
+			}
+			
+		}
+		
+		
+	};
+	this.jbt.addActionListener(escuchador);
+	
 	}
-}
+		
+		
+		
+		}

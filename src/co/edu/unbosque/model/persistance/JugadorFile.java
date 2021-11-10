@@ -108,7 +108,8 @@ public class JugadorFile {
 		String respuesta="Registro del Juego";
 		juego staff[]=new juego[3];
 		staff[0]=creando_juego(tipo,nombre);
-		
+		staff[1]=creando_juego(tipo,nombre);
+		staff[2]=creando_juego(tipo,nombre);
 		
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ruta3));
@@ -210,6 +211,14 @@ public class JugadorFile {
 
 	public void setDatos2(paritda[] datos2) {
 		this.datos2 = datos2;
+	}
+
+	public juego[] getDatos3() {
+		return datos3;
+	}
+
+	public void setDatos3(juego[] datos3) {
+		this.datos3 = datos3;
 	}
 	
 	

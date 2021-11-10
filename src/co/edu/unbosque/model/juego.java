@@ -1,6 +1,8 @@
 package co.edu.unbosque.model;
 
-public class juego {
+import java.io.Serializable;
+
+public class juego implements Serializable{
 
 	String nombre;
     String tipo;
