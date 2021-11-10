@@ -4,6 +4,8 @@ import java.awt.event.ActionListener;
 import co.edu.unbosque.model.Binarios;
 import co.edu.unbosque.model.persistance.JugadorFile;
 import co.edu.unbosque.view.Formulario;
+import co.edu.unbosque.view.Juego;
+import co.edu.unbosque.view.Partida;
 import co.edu.unbosque.view.View;
 import co.edu.unbosque.view.view2;
 
@@ -11,6 +13,8 @@ public class controller implements ActionListener{
 	private static  Formulario form;
 	private Binarios bd;
 	private JugadorFile jf;
+	private Juego juego;
+	private Partida part;
 
 	//Atributos que vienen de Vista - GUI
 	private View gui;
@@ -19,6 +23,9 @@ public class controller implements ActionListener{
 	public controller() {
 		jf=new JugadorFile();
 		form=new Formulario();
+		juego=new Juego();
+		part=new Partida();
+		
 
 		//aqui van los constructores tanto de Mundo, como de Vista
 
@@ -56,14 +63,16 @@ public class controller implements ActionListener{
 		
 		if(evento.getActionCommand().equals(gui.getPanelEntrada().JUEGO)) {
 			
+			juego.setVisible(true);
 		}
 
 		if(evento.getActionCommand().equals(gui.getPanelEntrada().ESCRIBIR_REG)) {
 			
+			
 		}
 
 		if(evento.getActionCommand().equals(gui.getPanelEntrada().LEER_REG)) {
-			
+			part.setVisible(true);
 		}
 		
 		
