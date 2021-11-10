@@ -16,6 +16,8 @@ public class View extends JFrame {
 	private PanelResultados panelResultados; //Se declara un objeto de tipo PanelResultados
 	private PanelRegistro panelRegistro;
 	private Formulario form;
+	private Juego juego;
+	private Partida part; 
 	
 	
 
@@ -39,16 +41,38 @@ public class View extends JFrame {
 		add(panelResultados,BorderLayout.CENTER);
 		panelRegistro = new PanelRegistro();
 		add(panelRegistro,BorderLayout.SOUTH);
-		form=new Formulario();
+		juego=new Juego();
+		part=new Partida();
+		setForm(new Formulario());
 		
 
 		//se agrega al boton ActionListener del objeto de Controlador - cambio
-		form.getJbt().addActionListener(control);
+		
 		panelEntrada.getButEscribir().addActionListener(control);
 		panelEntrada.getButLeer().addActionListener(control);
 		panelEntrada.getButLeerReg().addActionListener(control);
 		panelEntrada.getButEscribirReg().addActionListener(control);
 	
+	}
+
+	public Juego getJuego() {
+		return juego;
+	}
+
+	public void setJuego(Juego juego) {
+		this.juego = juego;
+	}
+
+	public Partida getPart() {
+		return part;
+	}
+
+	public void setPart(Partida part) {
+		this.part = part;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public PanelEntrada getPanelEntrada() {
@@ -82,7 +106,7 @@ public class View extends JFrame {
 	public void mostrarJugadores(int numReg, Jugador numeros[]) {
 		for (int i= 0 ; i<numReg ; i++) {
 			getPanelResultados().getTxtMonto().append(String.valueOf(numeros[i].getNombre())+"\n");
-			getPanelResultados().getTxtValores().append(String.valueOf(numeros[i].getGenero())+"\n");
+			getPanelResultados().getTxtValores().append(String.valueOf(numeros[i].getPuntaje())+"\n");
 		}	
 	}	
 
@@ -94,6 +118,14 @@ public class View extends JFrame {
 			getPanelRegistro().getTxtSalario().append(String.valueOf(datos[i].getSalario())+"\n");
 		
 		}	
+	}
+
+	public Formulario getForm() {
+		return form;
+	}
+
+	public void setForm(Formulario form) {
+		this.form = form;
 	}
 
 }

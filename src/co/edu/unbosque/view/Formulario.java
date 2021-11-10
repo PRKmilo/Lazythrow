@@ -41,18 +41,7 @@ public class Formulario extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Formulario frame = new Formulario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 	
 
 	/**
@@ -128,19 +117,20 @@ public class Formulario extends JFrame {
 				System.out.println(jf);
 				System.out.println("se oprimio el boton de registrar");
 				String genero=textField_3.getText();
-				int edad=Integer.parseInt(textField_2.getText());
+				int edad=Integer.parseInt(textField_1.getText());
 				String nombre=textField.getText();
-				int puntaje=Integer.parseInt(textField_1.getText());
+				int puntaje=Integer.parseInt(textField_2.getText());
 				
 				JOptionPane.showMessageDialog(null,jf.escribir_registroJugador(nombre, edad, genero, puntaje));
 				jf.leerRegistro();
 				System.out.println(jf.getDatos()+"");
-				}catch(Exception e1) {
-					JOptionPane.showMessageDialog(null, "ingrese todos los valores , si usted los ingreso"+"\n"+"entonces asegurese que los valoeres sean numericos en donde "+"\n"+"se le pide");				
-				}
 				for(int i=0;i<jf.getDatos().length;i++) {
 					System.out.println(jf.getDatos()[i].getNombre()+" este es el nombre de el objeto");
 				}
+				}catch(Exception e1) {
+					JOptionPane.showMessageDialog(null, "ingrese todos los valores , si usted los ingreso"+"\n"+"entonces asegurese que los valoeres sean numericos en donde "+"\n"+"se le pide");				
+				}
+				
 				
 				// TODO Auto-generated method stub
 				
