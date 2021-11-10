@@ -31,7 +31,7 @@ public class PanelResultados extends JPanel {
 		setBorder( border );
 		labResultado = new JLabel("Listado de Resultados Archivo");
 		txtValores = new JTextArea("");
-		txtValores.setForeground(Color.white);
+		txtValores.setForeground(Color.green);
 		txtValores.setBackground(Color.black);
 
 		txtMonto = new JTextArea("");

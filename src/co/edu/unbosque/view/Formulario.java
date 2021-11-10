@@ -124,7 +124,7 @@ public class Formulario extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				try {
 				System.out.println(jf);
 				System.out.println("se oprimio el boton de registrar");
 				String genero=textField_3.getText();
@@ -135,6 +135,9 @@ public class Formulario extends JFrame {
 				JOptionPane.showMessageDialog(null,jf.escribir_registroJugador(nombre, edad, genero, puntaje));
 				jf.leerRegistro();
 				System.out.println(jf.getDatos()+"");
+				}catch(Exception e1) {
+					JOptionPane.showMessageDialog(null, "ingrese todos los valores , si usted los ingreso"+"\n"+"entonces asegurese que los valoeres sean numericos en donde "+"\n"+"se le pide");				
+				}
 				for(int i=0;i<jf.getDatos().length;i++) {
 					System.out.println(jf.getDatos()[i].getNombre()+" este es el nombre de el objeto");
 				}

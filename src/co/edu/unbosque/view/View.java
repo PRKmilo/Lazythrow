@@ -6,6 +6,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import co.edu.unbosque.controller.controller;
+import co.edu.unbosque.model.Jugador;
 import co.edu.unbosque.model.persistance.Registro;
 
 public class View extends JFrame {
@@ -78,10 +79,10 @@ public class View extends JFrame {
 		JOptionPane.showMessageDialog(null, mensaje, "archivos binarios", JOptionPane.INFORMATION_MESSAGE);
 	}
 
-	public void mostrarCifras(int numReg, double numeros[], int valores[]) {
+	public void mostrarJugadores(int numReg, Jugador numeros[]) {
 		for (int i= 0 ; i<numReg ; i++) {
-			getPanelResultados().getTxtMonto().append(String.valueOf(numeros[i])+"\n");
-			getPanelResultados().getTxtValores().append(String.valueOf(valores[i])+"\n");
+			getPanelResultados().getTxtMonto().append(String.valueOf(numeros[i].getNombre())+"\n");
+			getPanelResultados().getTxtValores().append(String.valueOf(numeros[i].getGenero())+"\n");
 		}	
 	}	
 

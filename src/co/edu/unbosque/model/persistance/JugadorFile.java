@@ -30,8 +30,8 @@ public class JugadorFile {
 		String respuesta="Registro de jugador ingresado";
 		Jugador staff[]=new Jugador[3];
 		staff[0]=creando_jugador(nombre,edad,genero,puntaje);
-		staff[1]=creando_jugador(nombre,edad,genero,puntaje);
-		staff[2]=creando_jugador(nombre,edad,genero,puntaje);
+		staff[1]=creando_jugador("pedro",42,"masculino",1234);
+		staff[2]=creando_jugador("maria",16,"femenino",123);
 		
 		
 		

@@ -67,8 +67,9 @@ public class controller implements ActionListener{
 		}
 
 		if(evento.getActionCommand().equals(gui.getPanelEntrada().ESCRIBIR_REG)) {
-			
-			
+			jf.leerRegistro();
+			System.out.println(jf.getDatos()+" este es el array de datos");
+			gui.mostrarJugadores(3, jf.getDatos());
 		}
 
 		if(evento.getActionCommand().equals(gui.getPanelEntrada().LEER_REG)) {
