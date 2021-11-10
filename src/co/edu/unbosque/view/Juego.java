@@ -20,6 +20,7 @@ public class Juego extends JFrame {
 	private JTextField textTipoDeJUego;
 	private JTextField textNombreDeJuego;
 
+
 	/**
 	 * Launch the application.
 	 */

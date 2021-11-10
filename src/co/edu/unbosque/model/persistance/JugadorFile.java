@@ -203,6 +203,14 @@ public class JugadorFile {
 	public void setDatos(Jugador[] datos) {
 		this.datos = datos;
 	}
+
+	public paritda[] getDatos2() {
+		return datos2;
+	}
+
+	public void setDatos2(paritda[] datos2) {
+		this.datos2 = datos2;
+	}
 	
 	
 }

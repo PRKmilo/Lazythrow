@@ -5,20 +5,32 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import co.edu.unbosque.model.persistance.JugadorFile;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.JButton;
 
 public class Partida extends JFrame {
-
+    
+	private JugadorFile jf;
 	private JPanel contentPane;
 	private JTextField textJugador1;
 	private JTextField txtJugador2;
 	private JTextField textTipoDePartida;
 	private JTextField txtPuntaje1;
 	private JTextField txtPuntaje2;
+	private JButton jbt;
+	private View v;
+	private static final String REGISTRAR ="REGISTRAR";
 
 	/**
 	 * Launch the application.
@@ -40,6 +52,9 @@ public class Partida extends JFrame {
 	 * Create the frame.
 	 */
 	public Partida() {
+		v = new View(null);
+		v.setVisible(false);
+		jf=new JugadorFile();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -98,9 +113,53 @@ public class Partida extends JFrame {
 		contentPane.add(txtPuntaje2);
 		txtPuntaje2.setColumns(10);
 		
-		JButton btnRegistrarJuego = new JButton("Registrar");
-		btnRegistrarJuego.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnRegistrarJuego.setBounds(167, 193, 125, 34);
-		contentPane.add(btnRegistrarJuego);
-	}
+		 this.jbt=new JButton("Registrar");
+			this.jbt.setFont(new Font("Tahoma", Font.BOLD, 14));
+			this.jbt.setBounds(167, 193, 125, 34);
+			this.jbt.setActionCommand(REGISTRAR);
+			contentPane.add(this.jbt);
+			ActionListener escuchador=new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					v.setVisible(true);
+				
+					
+					String jugador1=textJugador1.getText();
+					String jugador2=txtJugador2.getText();
+				
+				double  puntaje= Double.parseDouble(txtPuntaje1.getText());
+				double puntaje2=Double.parseDouble(txtPuntaje2.getText());
+				String Tipopartida=textTipoDePartida.getText();
+				
+				JOptionPane.showMessageDialog(null,jf.escribir_partida(jugador1, jugador2, Tipopartida, puntaje, puntaje2));
+				System.out.println(jf+"este es el objecto jf");
+				jf.leerpartida();
+				System.out.println(jf.getDatos2()+"");
+				for(int i=0;i<jf.getDatos2().length;i++) {
+					System.out.println(jf.getDatos2()[i].getTipopartida()+" este es el nombre de el objeto");
+					
+					}
+					
+		
+					
+			
+				}	
+			};
+			this.jbt.addActionListener(escuchador);
+			
+			
+		
+			
+			}
+
+		
+			
 }
+	
+			
+
+	
+
+
+

@@ -124,6 +124,7 @@ public class Formulario extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				System.out.println(jf);
 				System.out.println("se oprimio el boton de registrar");
 				String genero=textField_3.getText();
