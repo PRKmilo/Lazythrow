@@ -69,11 +69,12 @@ public class JugadorFile {
 	public Jugador creando_jugador(String nombre,int edad,String genero,int puntaje) {
 		return new Jugador(nombre,edad,genero,puntaje);
 	}
-	public String escribir_partida() {
+	public String escribir_partida(String jugador1,String jugador2,String juego,double puntaje1,double puntaje2) {
 		String respuesta="Registro de partida";
 		paritda staff2[]=new paritda[3];
 		staff2[0]=new paritda("Jorge","camilo","parques",0.0,0.0);
 		staff2[1]=new paritda("Esteban","fercho","piquis",0.0,0.0);
+		staff2[2]=creando_partida( jugador1, jugador2, juego, puntaje1, puntaje2);
 		
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ruta2));
@@ -85,6 +86,9 @@ public class JugadorFile {
 			respuesta = "Error de IO";
 		}
 		return respuesta;
+	}
+	public paritda creando_partida(String jugador1,String jugador2,String juego,double puntaje1,double puntaje2) {
+		return new paritda(jugador1,jugador2,juego,puntaje1,puntaje2);
 	}
 	public void leerpartida() {
         ObjectInputStream in;
