@@ -1,12 +1,13 @@
 package co.edu.unbosque.view;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import co.edu.unbosque.controller.controller;
-import co.edu.unbosque.model.Jugador;
+import co.edu.unbosque.model.JugadorDTO;
 import co.edu.unbosque.model.persistance.Registro;
 
 public class View extends JFrame {
@@ -103,15 +104,15 @@ public class View extends JFrame {
 		JOptionPane.showMessageDialog(null, mensaje, "archivos binarios", JOptionPane.INFORMATION_MESSAGE);
 	}
 
-	public void mostrarJugadores(int numReg, Jugador numeros[]) {
-		for (int i= 0 ; i<numReg ; i++) {
-			getPanelResultados().getTxtMonto().append(String.valueOf(numeros[i].getNombre())+"\n");
-			getPanelResultados().getTxtValores().append(String.valueOf(numeros[i].getPuntaje())+"\n");
+	public void mostrarJugadores(ArrayList<JugadorDTO> Staff_jugadores) {
+		for (int i= 0 ; i<Staff_jugadores.size() ; i++) {
+			getPanelResultados().getTxtMonto().append(String.valueOf(Staff_jugadores.get(i).getNombre())+"\n");
+			getPanelResultados().getTxtValores().append(String.valueOf(Staff_jugadores.get(i).getPuntaje())+"\n");
 		}	
 	}	
 
-	public void mostrarRegistros(int numReg, Registro[] datos) {
-		for (int i= 0 ; i<numReg ; i++) {
+	public void mostrarRegistros( Registro[] datos) {
+		for (int i= 0 ; i<3 ; i++) {
 			getPanelRegistro().getTxtEdad().append(String.valueOf(datos[i].getEdad())+"\n");
 			
 			getPanelRegistro().getTxtNombre().append(String.valueOf(datos[i].getNombre())+"\n");

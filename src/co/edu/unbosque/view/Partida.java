@@ -131,15 +131,12 @@ public class Partida extends JFrame {
 				double  puntaje= Double.parseDouble(txtPuntaje1.getText());
 				double puntaje2=Double.parseDouble(txtPuntaje2.getText());
 				String Tipopartida=textTipoDePartida.getText();
-				
-				JOptionPane.showMessageDialog(null,jf.escribir_partida(jugador1, jugador2, Tipopartida, puntaje, puntaje2));
+			
+		
 				System.out.println(jf+"este es el objecto jf");
 				jf.leerpartida();
 				System.out.println(jf.getDatos2()+"");
-				for(int i=0;i<jf.getDatos2().length;i++) {
-					System.out.println(jf.getDatos2()[i].getTipopartida()+" este es el nombre de el objeto");
-					
-					}
+				
 					
 		
 					

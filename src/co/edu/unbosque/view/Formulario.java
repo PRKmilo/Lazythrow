@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import co.edu.unbosque.controller.controller;
+import co.edu.unbosque.model.JugadorDTO;
+import co.edu.unbosque.model.persistance.JugadorDAO;
 import co.edu.unbosque.model.persistance.JugadorFile;
 
 import javax.swing.JLabel;
@@ -35,6 +37,7 @@ public class Formulario extends JFrame {
 	private JugadorFile jf; 
 	private JButton jbt;
 	private controller cont;
+	private JugadorDAO jugador;
 	private static final String REGISTRAR ="REGISTRAR";
 	
 
@@ -48,6 +51,7 @@ public class Formulario extends JFrame {
 	 * Create the frame.
 	 */
 	public Formulario() {
+		jugador=new JugadorDAO();
 		jf=new JugadorFile();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 565, 348);
@@ -113,23 +117,20 @@ public class Formulario extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
+				
 				System.out.println(jf);
 				System.out.println("se oprimio el boton de registrar");
 				String genero=textField_3.getText();
 				int edad=Integer.parseInt(textField_1.getText());
 				String nombre=textField.getText();
 				int puntaje=Integer.parseInt(textField_2.getText());
+				JugadorDTO nuevo_jugador=new JugadorDTO(nombre,edad,genero,puntaje);
+				System.out.println(nuevo_jugador+" este es el objeto");
 				
-				JOptionPane.showMessageDialog(null,jf.escribir_registroJugador(nombre, edad, genero, puntaje));
-				jf.leerRegistro();
-				System.out.println(jf.getDatos()+"");
-				for(int i=0;i<jf.getDatos().length;i++) {
-					System.out.println(jf.getDatos()[i].getNombre()+" este es el nombre de el objeto");
-				}
-				}catch(Exception e1) {
-					JOptionPane.showMessageDialog(null, "ingrese todos los valores , si usted los ingreso"+"\n"+"entonces asegurese que los valoeres sean numericos en donde "+"\n"+"se le pide");				
-				}
+				jugador.Agregar_jugador(nuevo_jugador);
+			
+				
+				
 				
 				
 				// TODO Auto-generated method stub

@@ -3,14 +3,18 @@ package co.edu.unbosque.model;
 import java.io.File;
 import java.io.Serializable;
 
-public class Jugador  implements Serializable{
+public class JugadorDTO  implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private int edad;
 	private String genero;
 	private int puntaje;
 		
-		public Jugador(String string, int i, String string2, int j) {
+		public JugadorDTO(String string, int i, String string2, int j) {
 		// TODO Auto-generated constructor stub
 			this.nombre= string;
 			this.edad =i;

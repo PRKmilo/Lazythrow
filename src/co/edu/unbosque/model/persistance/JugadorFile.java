@@ -8,12 +8,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
 import co.edu.unbosque.model.juego;
-import co.edu.unbosque.model.Jugador;
+import co.edu.unbosque.model.JugadorDTO;
 import co.edu.unbosque.model.paritda;
 
 public class JugadorFile {
-	private Jugador player1;
 	private  String ruta="./Data/jugador.out";
 	private String ruta2="./Data/partida.out";
 	private String ruta3="./Data/juego.out";
@@ -22,74 +23,46 @@ public class JugadorFile {
 	private DataOutputStream dos;
 	private FileInputStream fis;     
 	private DataInputStream dis;
-	private Jugador[] datos;
+	private JugadorDTO jugador;
+	private JugadorDAO jugador2;
+	
 	private paritda[] datos2;
 	private juego[] datos3;
 	
-	public String escribir_registroJugador(String nombre,int edad,String genero,int puntaje) {
-		String respuesta="Registro de jugador ingresado";
-		Jugador staff[]=new Jugador[3];
-		staff[0]=creando_jugador(nombre,edad,genero,puntaje);
-		staff[1]=creando_jugador("pedro",42,"masculino",1234);
-		staff[2]=creando_jugador("maria",16,"femenino",123);
-		
-		
-		
+	public int escribirArchivoJugador(ArrayList<JugadorDTO> Staff_jugadores) {
 		try {
-			System.out.println("linea 39");
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ruta));
-			System.out.println("linea 41");
-			for (int i=0;i<staff.length;i++) {
-				System.out.println(staff[i]+"es es el objeto num "+i);
-			}
-			out.writeObject(staff);
-			System.out.println("linea 43");
-			out.close();
+			ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(ruta));
+			salida.writeObject(Staff_jugadores);
+			salida.close();
+		}catch(IOException e) {
+			return -1;
 		}
-		catch (IOException e) {
-			e.printStackTrace();
-			respuesta = "Error de IO";
-		}
-		return respuesta;
+		return 0;
 	}
 	
-	public void leerRegistro() {
-        ObjectInputStream in;
-		try {
-			in = new ObjectInputStream(new FileInputStream(ruta));
-	        datos = (Jugador[])in.readObject();
-	        in.close();
-	        
+	public JugadorDAO getJugador2() {
+		return jugador2;
+	}
 
+	public void setJugador2(JugadorDAO jugador2) {
+		this.jugador2 = jugador2;
+	}
+
+	public ArrayList<JugadorDTO> leerArchivoEmpleado() {
+		ArrayList<JugadorDTO> nomina = null;
+		try {
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream(ruta));
+			nomina = (ArrayList<JugadorDTO>)in.readObject();
+			in.close();
 		} catch (IOException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return null;
 		}
+		return nomina;
 	}
-	public Jugador creando_jugador(String nombre,int edad,String genero,int puntaje) {
-		return new Jugador(nombre,edad,genero,puntaje);
-	}
-	public String escribir_partida(String jugador1,String jugador2,String juego,double puntaje1,double puntaje2) {
-		String respuesta="Registro de partida";
-		paritda staff2[]=new paritda[3];
-		staff2[0]=new paritda("Jorge","camilo","parques",0.0,0.0);
-		staff2[1]=new paritda("Esteban","fercho","piquis",0.0,0.0);
-		staff2[2]=creando_partida( jugador1, jugador2, juego, puntaje1, puntaje2);
-		
-		try {
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ruta2));
-			out.writeObject(staff2);
-			out.close();
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-			respuesta = "Error de IO";
-		}
-		return respuesta;
-	}
-	public paritda creando_partida(String jugador1,String jugador2,String juego,double puntaje1,double puntaje2) {
-		return new paritda(jugador1,jugador2,juego,puntaje1,puntaje2);
-	}
+	
+	
+	
 	public void leerpartida() {
         ObjectInputStream in;
 		try {
@@ -141,13 +114,7 @@ public class JugadorFile {
 		}
 	}
 
-	public Jugador getPlayer1() {
-		return player1;
-	}
-
-	public void setPlayer1(Jugador player1) {
-		this.player1 = player1;
-	}
+	
 
 	public String getRuta() {
 		return ruta;
@@ -197,13 +164,7 @@ public class JugadorFile {
 		this.dis = dis;
 	}
 
-	public Jugador[] getDatos() {
-		return datos;
-	}
-
-	public void setDatos(Jugador[] datos) {
-		this.datos = datos;
-	}
+	
 
 	public paritda[] getDatos2() {
 		return datos2;
