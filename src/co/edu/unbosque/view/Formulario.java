@@ -7,8 +7,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import co.edu.unbosque.controller.controller;
-import co.edu.unbosque.model.JugadorDTO;
-import co.edu.unbosque.model.persistance.JugadorDAO;
 import co.edu.unbosque.model.persistance.JugadorFile;
 
 import javax.swing.JLabel;
@@ -37,21 +35,31 @@ public class Formulario extends JFrame {
 	private JugadorFile jf; 
 	private JButton jbt;
 	private controller cont;
-	private JugadorDAO jugador;
 	private static final String REGISTRAR ="REGISTRAR";
+	private JTextField textField_4;
 	
 
 	/**
 	 * Launch the application.
 	 */
-	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Formulario frame = new Formulario();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 	
 
 	/**
 	 * Create the frame.
 	 */
 	public Formulario() {
-		jugador=new JugadorDAO();
 		jf=new JugadorFile();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 565, 348);
@@ -79,7 +87,7 @@ public class Formulario extends JFrame {
 		
 		
 		textField_3=new JTextField();
-		textField_3.setBounds(386, 151, 103, 21);
+		textField_3.setBounds(377, 153, 103, 21);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
@@ -110,28 +118,36 @@ public class Formulario extends JFrame {
 		
 		 this.jbt=new JButton("Registrar");
 		this.jbt.setFont(new Font("Tahoma", Font.BOLD, 14));
-		this.jbt.setBounds(220, 235, 133, 31);
+		this.jbt.setBounds(244, 233, 133, 31);
 		this.jbt.setActionCommand(REGISTRAR);
 		contentPane.add(this.jbt);
+		
+		JLabel lblNewLabel_5 = new JLabel("Jugador ID");
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_5.setBounds(24, 202, 96, 13);
+		contentPane.add(lblNewLabel_5);
+		
+		textField_4 = new JTextField();
+		textField_4.setBounds(141, 201, 96, 19);
+		contentPane.add(textField_4);
+		textField_4.setColumns(10);
 		ActionListener escuchador=new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
 				System.out.println(jf);
 				System.out.println("se oprimio el boton de registrar");
 				String genero=textField_3.getText();
-				int edad=Integer.parseInt(textField_1.getText());
+				int edad=Integer.parseInt(textField_2.getText());
 				String nombre=textField.getText();
-				int puntaje=Integer.parseInt(textField_2.getText());
-				JugadorDTO nuevo_jugador=new JugadorDTO(nombre,edad,genero,puntaje);
-				System.out.println(nuevo_jugador+" este es el objeto");
+				int puntaje=Integer.parseInt(textField_1.getText());
 				
-				jugador.Agregar_jugador(nuevo_jugador);
-			
-				
-				
-				
+				JOptionPane.showMessageDialog(null,jf.escribir_registroJugador(nombre, edad, genero, puntaje));
+				jf.leerRegistro();
+				System.out.println(jf.getDatos()+"");
+				for(int i=0;i<jf.getDatos().length;i++) {
+					System.out.println(jf.getDatos()[i].getNombre()+" este es el nombre de el objeto");
+				}
 				
 				// TODO Auto-generated method stub
 				
@@ -192,10 +208,4 @@ public class Formulario extends JFrame {
 	public void setTextField_2(JTextField textField_2) {
 		this.textField_2 = textField_2;
 	}
-
-
-	
-	
-	
-	
 }
