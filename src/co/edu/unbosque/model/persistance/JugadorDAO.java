@@ -20,6 +20,20 @@ public class JugadorDAO {
 		Staff_jugadores.add(jugador);
 		Archivo_jugador.escribirArchivoJugador(Staff_jugadores);
 	}
+	public boolean Existe(String id) {
+		boolean respuesta=false;
+		if(Staff_jugadores==null) {
+			respuesta=false;
+		}
+		else {
+			for(int i=0;i<Staff_jugadores.size();i++) {
+				if(Staff_jugadores.get(i).getId().equals(id)) {
+					respuesta=true;
+				}
+			}
+		}
+		return respuesta;
+	}
 	public ArrayList<JugadorDTO> getNomina() {
 		return Staff_jugadores;
 	}

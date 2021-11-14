@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import co.edu.unbosque.controller.controller;
+import co.edu.unbosque.model.JugadorDTO;
+import co.edu.unbosque.model.persistance.JugadorDAO;
 import co.edu.unbosque.model.persistance.JugadorFile;
 
 import javax.swing.JLabel;
@@ -37,6 +39,8 @@ public class Formulario extends JFrame {
 	private controller cont;
 	private static final String REGISTRAR ="REGISTRAR";
 	private JTextField textField_4;
+	private JugadorDTO jugador2;
+	private JugadorDAO jugador1;
 	
 
 	/**
@@ -61,6 +65,8 @@ public class Formulario extends JFrame {
 	 */
 	public Formulario() {
 		jf=new JugadorFile();
+		jugador1=new JugadorDAO();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 565, 348);
 		contentPane = new JPanel();
@@ -135,19 +141,17 @@ public class Formulario extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(jf);
-				System.out.println("se oprimio el boton de registrar");
 				String genero=textField_3.getText();
 				int edad=Integer.parseInt(textField_2.getText());
 				String nombre=textField.getText();
 				int puntaje=Integer.parseInt(textField_1.getText());
-				
-				JOptionPane.showMessageDialog(null,jf.escribir_registroJugador(nombre, edad, genero, puntaje));
-				jf.leerRegistro();
-				System.out.println(jf.getDatos()+"");
-				for(int i=0;i<jf.getDatos().length;i++) {
-					System.out.println(jf.getDatos()[i].getNombre()+" este es el nombre de el objeto");
-				}
+				String id=textField_4.getText();
+				if(jugador1.Existe(id)==true) {
+					JOptionPane.showMessageDialog(null, "ese id ya existe,intente con otro");
+				}else {
+				JugadorDTO nuevo_jugador=new JugadorDTO(nombre,puntaje,genero,edad,id);
+				jugador1.Agregar_jugador(nuevo_jugador);
+				}   
 				
 				// TODO Auto-generated method stub
 				
