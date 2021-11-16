@@ -2,7 +2,8 @@ package co.edu.unbosque.model;
 
 import java.io.Serializable;
 
-public class paritda implements Serializable{
+public class paritdaDTO implements Serializable{
+	private static final long serialVersionUID = 1L;
    private String jugador1;
    private String jugador2;
    private String tipopartida;
@@ -10,7 +11,7 @@ public class paritda implements Serializable{
    private double puntaje2;
    
 
-public paritda(String jugador1, String jugador2, String tipopartida, double puntaje1, double puntaje2) {
+public paritdaDTO(String jugador1, String jugador2, String tipopartida, double puntaje1, double puntaje2) {
 	super();
 	this.jugador1 = jugador1;
 	this.jugador2 = jugador2;

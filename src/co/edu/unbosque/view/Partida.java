@@ -6,7 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import co.edu.unbosque.model.paritdaDTO;
 import co.edu.unbosque.model.persistance.JugadorFile;
+import co.edu.unbosque.model.persistance.PartidaDAO;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -29,6 +31,8 @@ public class Partida extends JFrame {
 	private JTextField txtPuntaje1;
 	private JTextField txtPuntaje2;
 	private JButton jbt;
+	private PartidaDAO pd;
+	private paritdaDTO pt;
 	
 	private static final String REGISTRAR ="REGISTRAR";
 
@@ -52,7 +56,7 @@ public class Partida extends JFrame {
 	 * Create the frame.
 	 */
 	public Partida() {
-		
+		pd=new PartidaDAO();
 
 		jf=new JugadorFile();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -132,12 +136,9 @@ public class Partida extends JFrame {
 				double puntaje2=Double.parseDouble(txtPuntaje2.getText());
 				String Tipopartida=textTipoDePartida.getText();
 			
-		
-				System.out.println(jf+"este es el objecto jf");
-				jf.leerpartida();
-				System.out.println(jf.getDatos2()+"");
-				
-					
+				paritdaDTO pt = new paritdaDTO(jugador1,jugador2,Tipopartida,puntaje,puntaje2);
+	            pd.agregarpartida(pt);
+	            System.out.println("1");
 		
 					
 			

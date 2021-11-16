@@ -12,7 +12,8 @@ import java.util.ArrayList;
 
 import co.edu.unbosque.model.juego;
 import co.edu.unbosque.model.JugadorDTO;
-import co.edu.unbosque.model.paritda;
+
+import co.edu.unbosque.model.paritdaDTO;
 
 public class JugadorFile {
 	private  String ruta="./Data/jugador.out";
@@ -26,7 +27,7 @@ public class JugadorFile {
 	private JugadorDTO jugador;
 	private JugadorDAO jugador2;
 	
-	private paritda[] datos2;
+	private ArrayList<paritdaDTO> datos2;
 	private juego[] datos3;
 	
 	public int escribirArchivoJugador(ArrayList<JugadorDTO> Staff_jugadores) {
@@ -63,19 +64,32 @@ public class JugadorFile {
 	
 	
 	
-	public void leerpartida() {
-        ObjectInputStream in;
+	public int escribirpartida(ArrayList<paritdaDTO> partida) {
 		try {
-			in = new ObjectInputStream(new FileInputStream(ruta2));
-	        datos2 = (paritda[])in.readObject();
-	        in.close();
-	        
-
+			ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(ruta2));
+			salida.writeObject(partida);
+			salida.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			return -1;
+		}
+		return 0;
+	}
+	
+	
+	public ArrayList<paritdaDTO> leerpartida1() {
+		ArrayList<paritdaDTO> partida = null;
+		try {
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream(ruta2));
+			partida = (ArrayList<paritdaDTO>)in.readObject();
+			in.close();
 		} catch (IOException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return null;
 		}
+		return partida;
 	}
+	
 	
 	public String escribirJuego(String tipo,String nombre) {
 		String respuesta="Registro del Juego";
@@ -166,13 +180,7 @@ public class JugadorFile {
 
 	
 
-	public paritda[] getDatos2() {
-		return datos2;
-	}
 
-	public void setDatos2(paritda[] datos2) {
-		this.datos2 = datos2;
-	}
 
 	public juego[] getDatos3() {
 		return datos3;
