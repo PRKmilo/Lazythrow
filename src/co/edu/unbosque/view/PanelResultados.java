@@ -26,7 +26,7 @@ public class PanelResultados extends JPanel {
 	public PanelResultados() {
 
 		setLayout( new GridLayout(1,2) );
-		TitledBorder border = BorderFactory.createTitledBorder("Resultados Archivos Binarios");
+		TitledBorder border = BorderFactory.createTitledBorder("Jugadores");
 		border.setTitleColor(Color.BLACK);
 		setBorder( border );
 		labResultado = new JLabel("Listado de Resultados Archivo");

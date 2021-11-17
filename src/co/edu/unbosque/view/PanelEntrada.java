@@ -24,7 +24,7 @@ public class PanelEntrada extends JPanel{
 
 	public PanelEntrada() {
 		setLayout( new GridLayout(2,2) );//se define el grid de 2x2
-		TitledBorder border = BorderFactory.createTitledBorder("Archivos Binarios");
+		TitledBorder border = BorderFactory.createTitledBorder("Sistema para jugadores");
 		border.setTitleColor(Color.BLACK);
 		setBorder( border );
 		labEntrada = new JLabel("Digite un Valor");
