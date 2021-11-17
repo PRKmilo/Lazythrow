@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import co.edu.unbosque.model.JugadorDTO;
 import co.edu.unbosque.model.PartidaDTO;
 import co.edu.unbosque.view.Partida;
 
@@ -27,9 +28,13 @@ public class PartidaDAO {
 	}
 	public void agregarpartida(PartidaDTO jugador){//Operación C - CRUD
 		ArrayList<PartidaDTO> nomina1=new ArrayList<PartidaDTO>();
-		if(nomina1!=null) {
-			par=nomina1;
-		}
+		if(jua.leerpartida1()==null)	
+			nomina1=new ArrayList<PartidaDTO>();
+	
+	else {
+		 nomina1=jua.leerpartida1();
+	}
+		par=nomina1;
 		par.add(jugador);
 		JOptionPane.showMessageDialog(null,jua.escribirpartida(par));
 	}
