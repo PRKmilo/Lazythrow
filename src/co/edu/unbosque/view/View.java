@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import co.edu.unbosque.controller.controller;
 import co.edu.unbosque.model.JugadorDTO;
-import co.edu.unbosque.model.persistance.Registro;
+
 
 public class View extends JFrame {
 	
@@ -111,15 +111,6 @@ public class View extends JFrame {
 		}	
 	}	
 
-	public void mostrarRegistros( Registro[] datos) {
-		for (int i= 0 ; i<3 ; i++) {
-			getPanelRegistro().getTxtEdad().append(String.valueOf(datos[i].getEdad())+"\n");
-			
-			getPanelRegistro().getTxtNombre().append(String.valueOf(datos[i].getNombre())+"\n");
-			getPanelRegistro().getTxtSalario().append(String.valueOf(datos[i].getSalario())+"\n");
-		
-		}	
-	}
 
 	public Formulario getForm() {
 		return form;

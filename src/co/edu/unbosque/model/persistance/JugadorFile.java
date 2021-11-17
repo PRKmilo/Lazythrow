@@ -10,7 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import co.edu.unbosque.model.juego;
+import co.edu.unbosque.model.JuegoDTO;
 import co.edu.unbosque.model.JugadorDTO;
 
 import co.edu.unbosque.model.PartidaDTO;
@@ -18,7 +18,7 @@ import co.edu.unbosque.model.PartidaDTO;
 public class JugadorFile {
 	private  String ruta="./Data/jugador2.out";
 	private String ruta2="./Data/partida.out";
-	private String ruta3="./Data/juego.out";
+	private String ruta3="./Data/Juego.out";
 	private File f; 
 	private FileOutputStream fos;     
 	private DataOutputStream dos;
@@ -27,8 +27,9 @@ public class JugadorFile {
 	private JugadorDTO jugador;
 	private JugadorDAO jugador2;
 	
+	
 	private ArrayList<PartidaDTO> datos2;
-	private juego[] datos3;
+	private JuegoDTO[] datos3;
 	
 	public int escribirArchivoJugador(ArrayList<JugadorDTO> Staff_jugadores) {
 		try {
@@ -91,43 +92,32 @@ public class JugadorFile {
 	}
 	
 	
-	public String escribirJuego(String tipo,String nombre) {
-		String respuesta="Registro del Juego";
-		juego staff[]=new juego[3];
-		staff[0]=creando_juego(tipo,nombre);
-		staff[1]=creando_juego(tipo,nombre);
-		staff[2]=creando_juego(tipo,nombre);
+	public int escribirJuego(ArrayList<JuegoDTO> listaDeJuegos) {
 		
 		try {
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ruta3));
-			out.writeObject(staff);
-			out.close();
+			ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(ruta3));
+			salida.writeObject(listaDeJuegos);
+			salida.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			return -1;
 		}
-		catch (IOException e) {
-			e.printStackTrace();
-			respuesta = "Error de IO";
-		}
-		return respuesta;
+		return 0;
 	}
 	
-	public juego creando_juego(String tipo,String nombre) {
-		return new juego( nombre ,tipo);
-	}
 	
-	public void leerJuego() {
-        ObjectInputStream in;
+	public ArrayList<JuegoDTO>  leerJuego() {
+		ArrayList<JuegoDTO> juego = null;
 		try {
-			in = new ObjectInputStream(new FileInputStream(ruta3));
-			datos3 = (juego[])in.readObject();
-	        in.close();
-	        
-
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream(ruta3));
+			juego = (ArrayList<JuegoDTO>)in.readObject();
+			in.close();
 		} catch (IOException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return null;
 		}
+		return juego;
 	}
-
 	
 
 	public String getRuta() {
@@ -182,11 +172,11 @@ public class JugadorFile {
 
 
 
-	public juego[] getDatos3() {
+	public JuegoDTO[] getDatos3() {
 		return datos3;
 	}
 
-	public void setDatos3(juego[] datos3) {
+	public void setDatos3(JuegoDTO[] datos3) {
 		this.datos3 = datos3;
 	}
 	

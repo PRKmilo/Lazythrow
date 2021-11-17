@@ -1,14 +1,12 @@
 package co.edu.unbosque.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import co.edu.unbosque.model.Binarios;
 import co.edu.unbosque.model.persistance.JugadorDAO;
 import co.edu.unbosque.model.persistance.JugadorFile;
 import co.edu.unbosque.view.Formulario;
 import co.edu.unbosque.view.Juego;
 import co.edu.unbosque.view.Partida;
 import co.edu.unbosque.view.View;
-import co.edu.unbosque.view.view2;
 
 public class controller implements ActionListener{
 	

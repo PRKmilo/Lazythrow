@@ -1,25 +1,20 @@
 package co.edu.unbosque.view;
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import co.edu.unbosque.model.persistance.JugadorFile;
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 import java.awt.Color;
-import javax.swing.JTextField;
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import co.edu.unbosque.model.persistance.JuegoDAO;
+import co.edu.unbosque.model.JuegoDTO;
+import co.edu.unbosque.model.persistance.JugadorFile;
 
 public class Juego extends JFrame {
 
@@ -29,7 +24,7 @@ public class Juego extends JFrame {
 	private JugadorFile jf;
 	private JButton jbt;
 	private static final String JUEGO ="JUEGO";
-
+	private JuegoDTO juego;
 
 	/**
 	 * Launch the application.
@@ -98,13 +93,11 @@ public class Juego extends JFrame {
 				
 			String Tipo = textTipoDeJUego.getText();
 			String nombre = textNombreDeJuego.getText();
-			JOptionPane.showMessageDialog(null,jf.escribirJuego(Tipo, nombre));
+			JuegoDTO juego = new JuegoDTO(Tipo, nombre);
+			JuegoDAO JUEGODAO = new JuegoDAO();
 		
 jf.leerJuego();
-			System.out.println(jf.getDatos3()+"");
-			for(int i=0; i<jf.getDatos3().length;i++) {
-				System.out.println(jf.getDatos3()[i].getNombre()+ "este es el nombre del objeto");
-			}
+			JUEGODAO.agregarJuego(juego);
 			
 		}
 		
