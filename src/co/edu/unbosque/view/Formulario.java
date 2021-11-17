@@ -41,7 +41,7 @@ public class Formulario extends JFrame {
 	private JTextField textField_4;
 	private JugadorDTO jugador2;
 	private JugadorDAO jugador1;
-	
+
 
 	/**
 	 * Launch the application.
@@ -58,7 +58,7 @@ public class Formulario extends JFrame {
 			}
 		});
 	}
-	
+
 
 	/**
 	 * Create the frame.
@@ -66,7 +66,7 @@ public class Formulario extends JFrame {
 	public Formulario() {
 		jf=new JugadorFile();
 		jugador1=new JugadorDAO();
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 565, 348);
 		contentPane = new JPanel();
@@ -74,65 +74,65 @@ public class Formulario extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel.setBounds(42, 94, 96, 31);
 		contentPane.add(lblNewLabel);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Edad:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_1.setBounds(42, 146, 96, 31);
 		contentPane.add(lblNewLabel_1);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("Puntaje:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_2.setBounds(271, 94, 96, 31);
 		contentPane.add(lblNewLabel_2);
-		
-		
-		
+
+
+
 		textField_3=new JTextField();
 		textField_3.setBounds(377, 153, 103, 21);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
-		
+
 		textField = new JTextField();
 		textField.setBounds(141, 102, 96, 19);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
+
 		textField_1 = new JTextField();
 		textField_1.setBounds(141, 154, 96, 19);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
-		
+
 		textField_2 = new JTextField();
 		textField_2.setBounds(377, 102, 96, 19);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
-		
+
 		JLabel lblNewLabel_3 = new JLabel("Genero:");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_3.setBounds(271, 150, 89, 20);
 		contentPane.add(lblNewLabel_3);
-		
+
 		JLabel lblNewLabel_4 = new JLabel("Registro de Usuario");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNewLabel_4.setBounds(187, 24, 214, 31);
 		contentPane.add(lblNewLabel_4);
-		
-		 this.jbt=new JButton("Registrar");
+
+		this.jbt=new JButton("Registrar");
 		this.jbt.setFont(new Font("Tahoma", Font.BOLD, 14));
 		this.jbt.setBounds(244, 233, 133, 31);
 		this.jbt.setActionCommand(REGISTRAR);
 		contentPane.add(this.jbt);
-		
-		JLabel lblNewLabel_5 = new JLabel("Jugador ID");
+
+		JLabel lblNewLabel_5 = new JLabel("Jugador Correo");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_5.setBounds(24, 202, 96, 13);
 		contentPane.add(lblNewLabel_5);
-		
+
 		textField_4 = new JTextField();
 		textField_4.setBounds(141, 201, 96, 19);
 		contentPane.add(textField_4);
@@ -145,27 +145,34 @@ public class Formulario extends JFrame {
 				int edad=Integer.parseInt(textField_2.getText());
 				String nombre=textField.getText();
 				int puntaje=Integer.parseInt(textField_1.getText());
-				String id=textField_4.getText();
-				if(jugador1.Existe(id)==true) {
-					JOptionPane.showMessageDialog(null, "ese id ya existe,intente con otro");
-				}else {
-				JugadorDTO nuevo_jugador=new JugadorDTO(nombre,puntaje,genero,edad,id);
-				jugador1.Agregar_jugador(nuevo_jugador);
-				}   
-				
+
+				String correo=textField_4.getText();
+
+				if(jugador1.Existe(correo)) {
+					JOptionPane.showMessageDialog(null, "lo siento intenta con otro correo");
+				}
+				else {
+					int id1=(jugador1.getNomina().size())+1;
+					System.out.println(id1+" este es el id ");
+					System.out.println(jugador1.getNomina().size()+" este es el tamaño del arraylist");
+					JugadorDTO nuevo_jugador=new JugadorDTO(nombre,puntaje,genero,edad,id1,correo);
+					jugador1.Agregar_jugador(nuevo_jugador);
+					JOptionPane.showMessageDialog(null, "su id es :"+id1);
+				}
+
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 		};
 		this.jbt.addActionListener(escuchador);
-		
-		
-	
-		
+
+
+
+
 	}
 
-	
+
 	public  String getRegistrar() {
 		return REGISTRAR;
 	}
@@ -177,12 +184,12 @@ public class Formulario extends JFrame {
 
 	public JButton getJbt() {
 		System.out.println(jbt);
-	
+
 		return this.jbt;
 	}
 
 
-	
+
 
 
 	public void setTextField_3(JTextField textField_3) {

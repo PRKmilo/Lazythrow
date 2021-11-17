@@ -13,10 +13,10 @@ import java.util.ArrayList;
 import co.edu.unbosque.model.juego;
 import co.edu.unbosque.model.JugadorDTO;
 
-import co.edu.unbosque.model.paritdaDTO;
+import co.edu.unbosque.model.PartidaDTO;
 
 public class JugadorFile {
-	private  String ruta="./Data/jugador.out";
+	private  String ruta="./Data/jugador2.out";
 	private String ruta2="./Data/partida.out";
 	private String ruta3="./Data/juego.out";
 	private File f; 
@@ -27,7 +27,7 @@ public class JugadorFile {
 	private JugadorDTO jugador;
 	private JugadorDAO jugador2;
 	
-	private ArrayList<paritdaDTO> datos2;
+	private ArrayList<PartidaDTO> datos2;
 	private juego[] datos3;
 	
 	public int escribirArchivoJugador(ArrayList<JugadorDTO> Staff_jugadores) {
@@ -64,7 +64,7 @@ public class JugadorFile {
 	
 	
 	
-	public int escribirpartida(ArrayList<paritdaDTO> partida) {
+	public int escribirpartida(ArrayList<PartidaDTO> partida) {
 		try {
 			ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(ruta2));
 			salida.writeObject(partida);
@@ -77,11 +77,11 @@ public class JugadorFile {
 	}
 	
 	
-	public ArrayList<paritdaDTO> leerpartida1() {
-		ArrayList<paritdaDTO> partida = null;
+	public ArrayList<PartidaDTO> leerpartida1() {
+		ArrayList<PartidaDTO> partida = null;
 		try {
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream(ruta2));
-			partida = (ArrayList<paritdaDTO>)in.readObject();
+			partida = (ArrayList<PartidaDTO>)in.readObject();
 			in.close();
 		} catch (IOException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block

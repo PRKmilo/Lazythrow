@@ -14,8 +14,6 @@ public class controller implements ActionListener{
 	
 	private JugadorFile jf;
 	
-	
-
 	//Atributos que vienen de Vista - GUI
 	private View gui;
 	

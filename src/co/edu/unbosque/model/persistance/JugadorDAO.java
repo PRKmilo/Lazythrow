@@ -14,20 +14,26 @@ public class JugadorDAO {
 	
 	public void Agregar_jugador(JugadorDTO jugador) {
 		ArrayList<JugadorDTO> nomina1=new ArrayList<JugadorDTO>();
-		if(nomina1!=null) {
-			Staff_jugadores=nomina1;
+		if(Archivo_jugador.leerArchivoEmpleado()==null) {
+			nomina1=new ArrayList<JugadorDTO>();
+		}else {
+			 nomina1=Archivo_jugador.leerArchivoEmpleado();
 		}
+		
+		Staff_jugadores=nomina1;
 		Staff_jugadores.add(jugador);
+		System.out.println("este es el tamaño de satff_jugadores "+Staff_jugadores.size());
 		Archivo_jugador.escribirArchivoJugador(Staff_jugadores);
 	}
-	public boolean Existe(String id) {
+	public boolean Existe(String correo) {
 		boolean respuesta=false;
 		if(Staff_jugadores==null) {
 			respuesta=false;
 		}
 		else {
 			for(int i=0;i<Staff_jugadores.size();i++) {
-				if(Staff_jugadores.get(i).getId().equals(id)) {
+				System.out.println("este es el staff por el camino del else"+Staff_jugadores);
+				if(Staff_jugadores.get(i).getCorreo().equals(correo)) {
 					respuesta=true;
 				}
 			}

@@ -13,22 +13,35 @@ public class JugadorDTO  implements Serializable{
 	private int edad;
 	private String genero;
 	private int puntaje;
-	private String id;
+	private int id;
+	private String correo;
 		
-		public JugadorDTO(String string, int i, String string2, int j,String id) {
+		public JugadorDTO(String string, int i, String string2, int j,int id,String correo) {
 		// TODO Auto-generated constructor stub
 			this.nombre= string;
 			this.edad =i;
 			this.genero=string2;
 			this.puntaje=j;
 			this.id=id;
+			this.correo=correo;
 	}
 		
-		public String getId() {
+		
+		public String getCorreo() {
+			return correo;
+		}
+
+
+		public void setCorreo(String correo) {
+			this.correo = correo;
+		}
+
+
+		public int getId() {
 			return id;
 		}
 
-		public void setId(String id) {
+		public void setId(int id) {
 			this.id = id;
 		}
 
